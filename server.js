@@ -16,6 +16,7 @@ db.on('disconnected', () => console.log(`MongoDB Disconnected`))
 
 // require Route files
 const indexRouter = require('./routes/index')
+const articlesRouter = require('./routes/articles')
 
 // Instantiatie Express Application Object
 const app = express()
@@ -30,6 +31,7 @@ const port = process.env.PORT || 5003
  */
 
 app.use(indexRouter)
+app.use(articlesRouter)
 
 // start the server and listen for requests on the given port
 app.listen(port, () => console.log(`Bloggy is listening on port ${port}`))
