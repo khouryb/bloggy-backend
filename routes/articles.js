@@ -54,5 +54,19 @@ router.get('/api/articles', (req, res) => {
  *  Description:   Create a new article
  */
 
+router.post('/api/articles', (req, res) => {
+    Article.create(req.body.article)
+    // On a successful 'create' action, respond with 201
+    // HTTP status and the content of the new Article 
+    .then((newArticle) => {
+        res.status(201).json({ article: newArticle })
+    })
+    // Catch any errors that may occur
+    .catch((error) => {
+        res.status(500).json({ error: error })
+    })
+})
+
+
 //export the Router so we can use it in the 'server.js file
 module.exports = router
